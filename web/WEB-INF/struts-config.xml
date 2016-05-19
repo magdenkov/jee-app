@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<!DOCTYPE struts-config PUBLIC  "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"  "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd"> 
+<struts-config>
+<form-beans> 
+  <form-bean name="LoginForm"  type="org.bugfix.ui.LoginForm"/>
+  <form-bean name="ListUsersForm"  type="org.bugfix.ui.ListUsersForm"/>
+  <form-bean name="UserForm"  type="org.bugfix.ui.UserForm"/>
+</form-beans>
+<global-forwards /> 
+<action-mappings> 
+  <action
+    path="/login" type="org.bugfix.ui.LoginAction" name="LoginForm" scope="session">
+    <forward name="success" path="/list.do" />
+    <forward name="error" path="/error.jsp" />
+  </action>
+  <action
+      path="/list" type="org.bugfix.ui.ListUsersAction" name="ListUsersForm" scope="session">
+    <forward name="list" path="/main.jsp" />
+  </action>
+
+  <action
+      path="/user" type="org.bugfix.ui.UserAction" name="UserForm" scope="session">
+    <forward name="show" path="/user.jsp" />
+    <forward name="finish" path="/list.do" />
+  </action>
+
+</action-mappings>
+<controller processorClass="org.apache.struts.action.RequestProcessor" /> 
+</struts-config> 
